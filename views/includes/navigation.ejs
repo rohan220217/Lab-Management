@@ -10,6 +10,7 @@
             <li class="nav-item">
                 <a class="nav-link <%= path === '/' ? 'active' : '' %>" href="/">Browse</a>
             </li>
+            <% if (isAuthenticated) { %>
             <li class="nav-item">
                 <a class="nav-link" href="#">Activity</a>
             </li>
@@ -19,15 +20,26 @@
             <li class="nav-item <%= path === '/admin/products' ? 'active' : '' %>">
                 <a class="nav-link" href="/admin/products">Admin Products</a>
             </li>
+            <% } %>
 
         </ul>
+
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item <%= path === '/signup' ? 'active' : '' %>">
-                <a class="nav-link" href="/signup">Sign Up</a>
+            <% if (!isAuthenticated) { %>
+            <li class="nav-item <%= path === '/signup' ? 'active' : '' %>" style="margin: 0px 5px ;">
+                <a class="btn btn-secondary btn-sm" href="/signup">Sign Up</a>
             </li>
             <li class="nav-item <%= path === '/login' ? 'active' : '' %>">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="btn btn-secondary btn-sm" href="/login">Login</a>
             </li>
+            <% } else { %>
+            <form action="/logout" method="POST">
+                <li class="nav-item <%= path === '/logout' ? 'active' : '' %>">
+                    <button type="submit" class="btn btn-outline-danger btn-sm" href="/logout">Logout</button>
+                </li>
+            </form>
+
+            <% } %>
         </ul>
 
     </div>

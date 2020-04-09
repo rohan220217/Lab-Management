@@ -6,7 +6,8 @@ exports.getIndex = (req, res, next) => {
             res.render('lib/index', {
                 pageTitle: 'Library',
                 path: '/',
-                prods: products
+                prods: products,
+                isAuthenticated: req.session.isLoggedIn
             });
         })
         .catch(err => console.log(err))
@@ -20,7 +21,8 @@ exports.getProduct = (req, res, next) => {
             res.render('lib/product-detail',{
                 pageTitle: 'Product Detail',
                 path: '/product-detail',
-                product: product
+                product: product,
+                isAuthenticated: req.session.isLoggedIn
             });
         })
         .catch(err => console.log(err));

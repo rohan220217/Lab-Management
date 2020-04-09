@@ -14,21 +14,22 @@
                         <h6 class="card-subtitle mb-2 text-muted">Category: <%= product.category %></h6>
                         <p class="card-text"><%= product.description %></p>
                         <p class="card-text">In Stock: <%= product.in_stock %></p>
-                        <a href="/products/<%= product._id %>" name="productId" class="btn btn-sm btn-outline-warning">Details</a>
-                                                
+                        <a href="/products/<%= product._id %>" name="productId"
+                            class="btn btn-sm btn-outline-warning">Details</a>
+                        <% if (isAuthenticated) { %>
                         <form class="form" action="#" method="POST" style="float: right;">
-                            
+
                             <button type="submit" class="btn btn-sm btn-outline-success">Issue</button>
                             <input type="hidden" value="<%= product._id %>" name="productId">
                         </form>
-                        
+                        <% } %>
                     </div>
                 </div>
             </div>
             <% } %>
             &nbsp;&nbsp;
         </div>
-        <% } else { %> 
+        <% } else { %>
         <h1>No products Found! </h1>
         <% } %>
 
