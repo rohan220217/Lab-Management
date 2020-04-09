@@ -26,7 +26,7 @@ exports.getProduct = (req, res, next) => {
         .catch(err => console.log(err));
 };
 
-exports.getCart = (req, res, next) => {
+exports.getActivity = (req, res, next) => {
     
 }
 

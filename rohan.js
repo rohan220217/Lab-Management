@@ -18,13 +18,16 @@ mongoose.connect('mongodb://localhost/Lib_Management', { useNewUrlParser: true ,
     })
     .catch(err => console.error('Could not connect to MongoDB...'));
 
-const libRoutes = require('./routes/lib');
+
 const adminRoutes = require('./routes/admin');
+const libRoutes = require('./routes/lib');
+const authRoutes = require('./routes/auth');
 const error = require('./controllers/error');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(libRoutes);
 app.use('/admin', adminRoutes);
+app.use(libRoutes);
+app.use(authRoutes);
 app.use(error.get404)
 
