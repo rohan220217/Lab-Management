@@ -1,8 +1,37 @@
 <%- include('../includes/head.ejs') %>
 </head>
+
 <body>
     <%- include('../includes/navigation.ejs') %>
     <div class="container">
-        <h1>Rohan management system</h1>
+        <% if (prods.length > 0) { %>
+        <div class="row">
+            <% for (let product of prods) { %>
+            <div class="col-sm-3 mb-3">
+                <div class="card border-dark">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= product.title %></h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Category: <%= product.category %></h6>
+                        <p class="card-text"><%= product.description %></p>
+                        <p class="card-text">In Stock: <%= product.in_stock %></p>
+                        <a href="/products/<%= product._id %>" name="productId" class="btn btn-sm btn-outline-warning">Details</a>
+                                                
+                        <form class="form" action="#" method="POST" style="float: right;">
+                            
+                            <button type="submit" class="btn btn-sm btn-outline-success">Issue</button>
+                            <input type="hidden" value="<%= product._id %>" name="productId">
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+            <% } %>
+            &nbsp;&nbsp;
+        </div>
+        <% } else { %> 
+        <h1>No products Found! </h1>
+        <% } %>
+
     </div>
-<%- include('../includes/end.ejs') %>
+
+    <%- include('../includes/end.ejs') %>

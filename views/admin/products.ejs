@@ -10,12 +10,17 @@
             <div class="col-sm-3 mb-3">
                 <div class="card border-dark">
                     <div class="card-body">
-                        <h5 class="card-title"><%= product.title %></h5>
+                        <h4 class="card-title"><%= product.title %></h4>
                         <h6 class="card-subtitle mb-2 text-muted">Category: <%= product.category %></h6>
                         <p class="card-text"><%= product.description %></p>
                         <p class="card-text">In Stock: <%= product.in_stock %></p>
-                        <button type="button" class="btn btn-sm btn-outline-warning">Edit</button>
-                        <button type="button" class="btn btn-sm btn-outline-danger">Delete</button>
+                        <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn btn-sm btn-outline-warning">Edit</a>
+                                                
+                        <form class="form" action="/admin/delete-product" method="POST" style="float: right;">
+                            
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                            <input type="hidden" value="<%= product._id %>" name="productId">
+                        </form>
                         
                     </div>
                 </div>
@@ -23,7 +28,7 @@
             <% } %>
             &nbsp;&nbsp;
         </div>
-        <% } else { %>
+        <% } else { %> 
         <h1>No products Found! </h1>
         <% } %>
 
