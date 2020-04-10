@@ -1,11 +1,10 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg ">
+<nav class="navbar  navbar-expand-lg navbar-dark bg-dark ">
     <a class="navbar-brand">Lab_Management</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
+      </button>
 
-    <div class="collapse navbar-collapse">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -34,12 +33,13 @@
                 <a class="btn btn-secondary btn-sm" href="/login">Login</a>
             </li>
             <% } else { %>
+            <li class="nav-item <%= path === '/logout' ? 'active' : '' %>">
             <form action="/logout" method="POST">
-                <li class="nav-item <%= path === '/logout' ? 'active' : '' %>">
+                
                     <button type="submit" class="btn btn-outline-danger btn-sm" href="/logout">Logout</button>
-                </li>
+                
             </form>
-
+            </li>
             <% } %>
         </ul>
 

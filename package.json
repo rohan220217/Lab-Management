@@ -4,7 +4,10 @@
   "description": "",
   "main": "rohan.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node rohan.js",
+    "start-server": "node rohan.js",
+    "start:dev": "nodemon rohan.js"
   },
   "keywords": [],
   "author": "",
@@ -12,11 +15,13 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^2.3.1",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "helmet": "^3.22.0",
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.7"
   }

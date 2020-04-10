@@ -12,21 +12,22 @@ exports.getSignup = (req, res, next) => {
 exports.postSignup = async (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
-    const name = req.body.name;
     try {
         const userdoc = await User.findOne({ email: email });
         if (userdoc) {
             return res.redirect('/signup');
         }
-        const hashedPassword = bcrypt.hash(password, 12);
+        const hashedPassword = await bcrypt.hash(password, 12);
         let user = new User({
-            name: name,
             email: email,
             password: hashedPassword,
             activity: { items: [] }
         })
         user = await user.save();
 
+
+    } catch{ err => console.log(err) }
+    try {
         console.log('User Created!');
         res.redirect('/login');
     } catch{ err => console.log(err) }
@@ -58,17 +59,20 @@ exports.postLogin = async (req, res, next) => {
             res.redirect('/login');
         };
 
-        const doMatch = bcrypt.compare(password, user.password);
+        const doMatch = await bcrypt.compare(password, user.password);
         if (doMatch) {
             req.session.isLoggedIn = true;
             req.session.user = user;
-            return req.session.save(err => {
+            req.session.save(err => {
                 console.log(err);
                 res.redirect('/');
             });
-        };
-        req.flash('error', ' Username or Password')
-        res.redirect('/login');
+        } else {
+            req.flash('error', ' Username or Password')
+            res.redirect('/login');
+        }
+
+
     } catch{
         err => {
             console.log(err)
