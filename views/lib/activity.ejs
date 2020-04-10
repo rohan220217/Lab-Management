@@ -6,16 +6,35 @@
     <% if (products.length > 0) { %>
     <div class="container">
         <div class="card">
-            <div class="card-header">
-                Featured
+            <div class="card-header text-center">
+                Recent Activity
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
+            <table class="table table-striped">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>In Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(p => {%>
+                    <tr>
+                        <td><%= p.productId.title %></td>
+                        <td><%= p.productId.category %></td>
+                        <td><%= p.quantity %></td>
+                        <td></td>
+                        <td>
+                            <form action="/return" method="POST">
+                                <button class="btn btn-outline-danger btn-sm">Return</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
         </div>
-
     </div>
     <% } else { %>
     <h1>No products Found! </h1>

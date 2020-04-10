@@ -12,7 +12,7 @@
             </li>
             <% if (isAuthenticated) { %>
             <li class="nav-item">
-                <a class="nav-link" href="#">Activity</a>
+                <a class="nav-link  <%= path === '/activity' ? 'active' : '' %>" href="/activity">Activity</a>
             </li>
             <li class="nav-item <%= path === '/admin/add-product' ? 'active' : '' %>">
                 <a class="nav-link" href="/admin/add-product">Add Product</a>

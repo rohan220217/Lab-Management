@@ -29,9 +29,31 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getActivity = (req, res, next) => {
-    
-}
+    req.user
+        .populate('activity.items.productId')
+        .execPopulate()
+        .then(user => {
+            const products = user.activity.items;
+            res.render('lib/activity', {
+                pageTitle: 'Your Activity',
+                path: '/activity',
+                products: products,
+                isAuthenticated: req.session.isLoggedIn
+            });
+        })
+        .catch(err => console.log(err));
+};
 
 exports.postCart = (req, res, next) => {
+    const prodId = req.body.productId;
+    Product.findById(prodId)
+        .then(product => {
+            return req.user.addToCart(product)
+        })
+        .then(result => {
+            console.log(result);
+            res.redirect('/activity');
+        })
+        .catch(err => console.log(err))
 
-}
+};

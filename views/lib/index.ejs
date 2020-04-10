@@ -17,7 +17,7 @@
                         <a href="/products/<%= product._id %>" name="productId"
                             class="btn btn-sm btn-outline-warning">Details</a>
                         <% if (isAuthenticated) { %>
-                        <form class="form" action="#" method="POST" style="float: right;">
+                        <form class="form" action="/cart" method="POST" style="float: right;">
 
                             <button type="submit" class="btn btn-sm btn-outline-success">Issue</button>
                             <input type="hidden" value="<%= product._id %>" name="productId">

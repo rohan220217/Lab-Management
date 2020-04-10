@@ -7,7 +7,7 @@ router.get('/', libController.getIndex);
 
 router.get('/products/:productId', libController.getProduct);
 
-router.get('/cart', libController.getActivity);
+router.get('/activity', libController.getActivity);
 
 router.post('/cart', libController.postCart);
 
