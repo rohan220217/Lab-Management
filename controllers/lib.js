@@ -57,3 +57,14 @@ exports.postCart = (req, res, next) => {
         .catch(err => console.log(err))
 
 };
+
+exports.return = (req, res, next) => {
+    const prodId = req.body.productId;
+    req.user
+        .removeFromActivity(prodId)
+        .then(result => {
+            res.redirect('/activity')
+            console.log(prodId)
+        })
+        .catch(err => console.log(err));
+};

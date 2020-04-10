@@ -11,4 +11,6 @@ router.get('/activity', libController.getActivity);
 
 router.post('/cart', libController.postCart);
 
+router.post('/return', libController.return);
+
 module.exports = router;  

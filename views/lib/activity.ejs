@@ -27,7 +27,9 @@
                         <td></td>
                         <td>
                             <form action="/return" method="POST">
-                                <button class="btn btn-outline-danger btn-sm">Return</button>
+                                <input type="hidden" name="productId" value="<%= p.productId._id %>">
+
+                                <button class="btn btn-outline-danger btn-sm" type="submit">Return</button>
                             </form>
                         </td>
                     </tr>
